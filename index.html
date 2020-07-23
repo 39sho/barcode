@@ -4,16 +4,16 @@
   <meta charset='utf-8'>
   <meta name='viewport' content='width=device-width,initial-scale=1'>
   <title>|ω・｀)ﾉ ﾔｧ</title>
+  <link rel="manifest" href="manifest.json">
   <script src="main.js" defer></script>
 </head>
 <body>
   <video autoplay></video>
   <dialog>
-    <a href=""></a>
+    <a href="" target="_blank" rel="noopener"></a>
     <button type="button">閉じる</button>
   </dialog>
 </body>
-</html>
 <style>
   html, body {
     margin: 0;
@@ -22,3 +22,7 @@
     width: 100%;
   }
 </style>
+<script>
+  navigator.serviceWorker.register('sw.js');
+</script>
+</html>

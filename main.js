@@ -1,6 +1,5 @@
 "use strict";
 
-
 const videoElement = document.querySelector("video");
 const dialog = document.querySelector("dialog");
 const a = document.querySelector("a");
@@ -40,7 +39,7 @@ const main = async () => {
     }, 100); 
 
   } catch(err) {
-    console.log(err);
+    console.error(err);
 
   }
 

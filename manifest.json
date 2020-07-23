@@ -1,0 +1,16 @@
+{
+  "name": "39sho.github.io/barcode",
+  "short_name": "barcode",
+  "description": "chrome83からフラグが取れたってよ",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "index.html",
+  "display": "standalone",
+  "theme_color": "#b3b8bb",
+  "background_color": "#b3b8bb"
+}

@@ -1,1 +1,1 @@
-/*This file is empty.*/
+self.addEventListener("fetch", e => {});

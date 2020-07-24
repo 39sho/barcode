@@ -1,11 +1,14 @@
-"use strict";
+'use strict';
 
-const videoElement = document.querySelector("video");
-const dialog = document.querySelector("dialog");
-const a = document.querySelector("a");
-const button = document.querySelector("button")
+const videoElement = document.querySelector('video');
+const dialog = document.querySelector('dialog');
+const a = document.querySelector('a');
+const button = document.querySelector('button')
 
-button.addEventListener('click', e => dialog.close());
+button.addEventListener('click', e => {
+  videoElement.play();
+  dialog.close()
+});
 
 const main = async () => {
 
@@ -13,17 +16,16 @@ const main = async () => {
     audio: false,
     video: {
       facingMode: {
-        exact: "environment",
-        width: 80,
-        height: 60
-      }
+        exact: 'environment'
+      },
+      width: 480,
+      height: 480,
+      frameRate: 20
     }
   };
 
-  let stream = null;
-
   try {
-    stream = await navigator.mediaDevices.getUserMedia(constraints);
+    const stream = await navigator.mediaDevices.getUserMedia(constraints);
     videoElement.srcObject = stream;
 
     const detector = new BarcodeDetector({
@@ -34,15 +36,19 @@ const main = async () => {
 
     setInterval(async () => {
       detectionList = await detector.detect(videoElement);
-      a.href = a.textContent = detectionList[0].rawValue;
-      dialog.showModal();
-    }, 100); 
+      for (const detected of detectionList) {
+        a.href = a.textContent = detected.rawValue;
+        if (!dialog.hasAttribute('open')) {
+          videoElement.pause();
+          dialog.showModal();
+        }
+      }
+    }, 500); 
 
   } catch(err) {
     console.error(err);
 
   }
-
 };
 
 main();

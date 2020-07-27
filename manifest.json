@@ -1,12 +1,13 @@
 {
-  "name": "39sho.github.io/barcode",
-  "short_name": "barcode",
-  "description": "chrome83からフラグが取れたってよ",
+  "name": "barcode",
+  "short_name": "39sho.github.io/barcode",
+  "description": "chrome83からフラグ取れたらしい",
   "icons": [
     {
       "src": "icon-192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "maskable any"
     }
   ],
   "start_url": "index.html",

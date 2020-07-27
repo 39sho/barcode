@@ -25,6 +25,7 @@ const main = async () => {
   };
 
   try {
+
     const stream = await navigator.mediaDevices.getUserMedia(constraints);
     videoElement.srcObject = stream;
 
@@ -44,8 +45,8 @@ const main = async () => {
         }
       }
     }, 500); 
-
   } catch(err) {
+    
     console.error(err);
 
   }

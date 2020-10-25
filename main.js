@@ -45,7 +45,7 @@ const main = async () => {
           a.href = a.textContent = detected.rawValue;
         }else {
           a.textContent = `「${detected.rawValue}」で検索`;
-          a.href = a.textContent = `https://www.google.com/search?q=${detected.rawValue}`;
+          a.href = `https://www.google.com/search?q=${detected.rawValue}`;
         }
         if (!dialog.hasAttribute('open')) {
           videoElement.pause();

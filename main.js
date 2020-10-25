@@ -29,16 +29,24 @@ const main = async () => {
     const stream = await navigator.mediaDevices.getUserMedia(constraints);
     videoElement.srcObject = stream;
 
+/*
     const detector = new BarcodeDetector({
       formats: ['qr_code']
     });
+*/
+    const detector = new BarcodeDetector();
 
     let detectionList = null;
 
     setInterval(async () => {
       detectionList = await detector.detect(videoElement);
       for (const detected of detectionList) {
-        a.href = a.textContent = detected.rawValue;
+        if (detected.format === 'qr_code') {
+          a.href = a.textContent = detected.rawValue;
+        }else {
+          a.textContent = `「${detected.rawValue}」で検索`;
+          a.href = a.textContent = `https://www.google.com/search?q=${detected.rawValue}`;
+        }
         if (!dialog.hasAttribute('open')) {
           videoElement.pause();
           dialog.showModal();
